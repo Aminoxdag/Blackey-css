@@ -1,29 +1,15 @@
+/* Import Google Fonts (keep it, but consider moving to MOTD if it delays rendering) */
 @import "https://fonts.googleapis.com/css?family=Oswald:700";
 
-
+/* Animations */
 @keyframes grayWhiteCycle {
-    0% { color: #000000; }  /* Black */
-    50% { color: #FFFFFF; }  /* White */
-    100% { color: #000000; } /* Black */
-}
-
-/* Animated class for different colors */
-.animated-text {
-    background-image: linear-gradient(135deg, #B6B6B6, #000000, #D3D3D3);
-    background-size: 200% auto;
-    color: #FFFFFF; /* Fallback color */
-    background-clip: text;
-    -webkit-background-clip: text;
-    text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 3s linear infinite; /* Animation speed */
-    display: inline-block;
+    0% { color: #000000; }
+    50% { color: #FFFFFF; }
+    100% { color: #000000; }
 }
 
 @keyframes textclip {
-    to {
-        background-position: 200% center;
-    }
+    to { background-position: 200% center; }
 }
 
 @keyframes blinkAnimation {
@@ -38,15 +24,61 @@
     100% { border-color: white; }
 }
 
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Ensure MOTD is visible and styled */
+#motd {
+    display: block !important; /* Force visibility */
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    position: relative;
+}
+
+/* Style MOTD elements */
+#motd p {
+    background-color: #000;
+    color: #fff;
+    padding: 5px;
+    border-radius: 15px;
+    margin: 10px 0;
+}
+
+#motd img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+#motd .animated-text {
+    background-image: linear-gradient(135deg, #B6B6B6, #000000, #D3D3D3);
+    background-size: 200% auto;
+    color: #FFFFFF;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 3s linear infinite;
+    display: inline-block;
+}
+
 /* General Styles */
 body {
-    font-family: Oswald !important;
-font-size: 12px;
-    font-size: 1.5rem;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 12px; /* Simplified to avoid conflicts */
     line-height: 1.42857143;
     color: gray;
-    background-color: black;
-    transition: all .3s ease-in-out 0s;
+    background-color: #000;
+    transition: all .3s ease-in-out;
 }
 
 /* Specific Element Styling */
@@ -60,83 +92,81 @@ font-size: 12px;
 }
 
 p {
-    background-color: black;
-    color: white;
+    background-color: #000;
+    color: #fff;
     padding: 5px;
     border-radius: 15px;
-    transition: transform 0.3s, background-color 0.3s;
+    transition: background-color 0.3s;
 }
 
 #animated-paragraph {
     animation: grayWhiteCycle 8s linear infinite;
 }
 
+/* Removed .well { display: none; } to avoid hiding MOTD */
 .well {
-    background-color: black;
+    background-color: #000;
     border: none;
     border-radius: 15px;
     animation: borderAnimation 3s infinite;
-   
 }
-
 
 /* Current Title Animation */
 .currenttitle {
     text-transform: uppercase;
-    background-image: linear-gradient(135deg, #ffffff 0%, #cccccc 25%, #aaaaaa 50%, #777777 75%, #000000 100%);
+    background-image: linear-gradient(135deg, #fff 0%, #ccc 25%, #aaa 50%, #777 75%, #000 100%);
     background-size: 200% auto;
-    color: #fff; /* Fallback color */
+    color: #fff;
     background-clip: text;
     -webkit-background-clip: text;
     text-fill-color: transparent;
     -webkit-text-fill-color: transparent;
     animation: textclip 1.5s linear infinite;
     display: inline-block;
-    font-size: 20px; /* Adjusted size */
+    font-size: 20px;
 }
 
 /* Button Styles */
 .custom-button {
-    position: relative; /* Ensure proper positioning */
-    color: white; /* Ensure text/icon is white */
-    padding: 10px 20px; /* Adjust padding for larger buttons */
-    min-width: 100px; /* Set a minimum width for the button */
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
+    position: relative;
+    color: #fff;
+    padding: 10px 20px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
 }
 
 .custom-button::after {
-    content: ""; /* Add default content; can be overridden */
-    position: absolute; /* Position it */
-    left: 50px; /* Adjust based on your design */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center the text */
-    font-size: 12px; /* Adjust font size as needed */
-    color: white; /* Set text color to white */
-    white-space: nowrap; /* Prevent text wrapping */
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #fff;
+    white-space: nowrap;
 }
 
 /* Hover Styles */
 p:hover {
-    transform: scale(1.1);
-    background-color: black;
+    background-color: #111;
 }
 
 .btn, .btn:hover {
     display: inline-block;
-    color: black;
+    color: #000;
     background: #fff;
-    font-family: Oswald !important;
+    font-family: 'Oswald', sans-serif !important;
     font-size: 12px;
     font-weight: bold;
     padding: 10px 13px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    text-align: center; /* Fixing text alignment */
-    text-decoration: none; /* Correcting text-decoration (set to 'none' to avoid underlines or other decoration) */
+    text-align: center;
+    text-decoration: none;
     margin: 5px;
-    text-shadow: none !important;  /* Remove any text shadow */
+    text-shadow: none !important;
 }
 
 .btn:hover {
@@ -145,11 +175,7 @@ p:hover {
 
 .userlist_owner {
     color: #fff !important;
-    text-shadow: 
-        0 0 8px #ff9900,    /* Stronger glow */
-        0 0 15px #ff9900,   /* Larger glow */
-        0 0 20px #ff9900,   /* Even more spread */
-        0 0 30px #ff9900;   /* Extra large spread for intense glow */
+    text-shadow: 0 0 8px #ff9900, 0 0 15px #ff9900, 0 0 20px #ff9900, 0 0 30px #ff9900;
     background: none !important;
 }
 
@@ -157,8 +183,9 @@ p:hover {
     color: #F8F8F0;
 }
 
+/* Removed #togglemotd { display: none; } to ensure MOTD toggle isn’t hidden */
 #togglemotd {
-    display: none;
+    display: inline-block; /* Restore default behavior */
 }
 
 /* Selection Styles */
@@ -167,7 +194,7 @@ p:hover {
 }
 
 #animated-paragraph span {
-    color: white;
+    color: #fff;
     transition: color 0.3s;
 }
 
@@ -178,51 +205,41 @@ p:hover {
 }
 
 #chatheader {
-    border: 0.50px solid LightGray;
+    border: 0.5px solid LightGray;
     margin-top: -10px;
     font-size: 20px;
-    font-family: Oswald !important;
-font-size: 12px;
-font-weight: bold;
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: bold;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    color: white;
+    color: #fff;
 }
 
 #videowrap-header {
     border: none;
-    font-size: 20px;
-    font-family: Oswald !important;
-font-size: 12px;
-font-weight: bold;
+    font-size: 12px;
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: bold;
 }
 
-
 #currenttitle {
-    display: fixed;
+    display: block; /* Changed from 'fixed' to 'block' */
     font-size: 13px;
-    font-family: Oswald !important;
-font-size: 12px;
-font-weight: bold;
-    color: white;
-    padding: 0px 0px; /* Add padding to ensure text doesn't touch edges */
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: bold;
+    color: #fff;
+    padding: 0;
 }
 
 #voteskip {
-    composes: custom-button; /* Apply custom button styles */
+    composes: custom-button;
 }
 
 #voteskip::after {
-    content: " vote to skip"; /* Add the desired text */
-font-family: Oswald !important;
-font-size: 12px;
-font-weight: bold;
-}
-
-/* Repeat this for other buttons as needed */
-#anotherButton {
-    composes: custom-button;
-    /* Additional specific styles if needed */
+    content: " vote to skip";
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .modal-content {
@@ -233,7 +250,6 @@ font-weight: bold;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
-}
 
 .text-muted {
     display: none;
@@ -241,7 +257,7 @@ font-weight: bold;
 
 .dropdown-menu {
     background: gray;
-    border-radius: 15px; /* Rounds the corners */
+    border-radius: 15px;
 }
 
 .navbar {
@@ -250,7 +266,7 @@ font-weight: bold;
     top: 0;
     opacity: 1;
     border-radius: 15px;
-    font-family: Oswald !important;
+    font-family: 'Oswald', sans-serif !important;
     font-weight: bold;
     border-bottom: none !important;
     box-shadow: 0 1px 10px #484848;
@@ -259,14 +275,15 @@ font-weight: bold;
 }
 
 .navbar-inverse .navbar-brand {
-  background-image: url('https://pomf2.lain.la/f/25ntlih.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 65px;
-  width: 80px;
-  text-indent: -9999px;
-  background-position: left 20px; /* Moves the image to the left */
+    background-image: url('https://pomf2.lain.la/f/25ntlih.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 65px;
+    width: 80px;
+    text-indent: -9999px;
+    background-position: left 20px;
 }
+
 .queue {
     border-style: hidden;
     background: none;
@@ -279,84 +296,82 @@ font-weight: bold;
 }
 
 #plmeta {
-    border-style: none;     /* Remove the border */
-    color: #ffff !important;
+    border-style: none;
+    color: #fff !important;
 }
 
-#queue>li {
+#queue > li {
     background: none;
     border-style: none;
-    border-bottom: solid 2px
-    font-family: Oswald !important;
-font-size: 15px;
-font-weight: bold; 
-!important;
+    border-bottom: solid 2px;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 15px;
+    font-weight: bold !important;
 }
+
 .queue_active {
-    color: #ffffff !important;
+    color: #fff !important;
     background: linear-gradient(135deg, #0000, #fff) !important;
     border: none !important;
     border-radius: 12px !important;
     padding: 10px 15px !important;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
     transition: all 0.3s ease;
 }
 
 .queue_active:hover {
     transform: translateY(-5px);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3) !important;
 }
 
 .pm-buffer.linewrap {
-    background-color: black;
+    background-color: #000;
 }
 
 .pm-buffer.linewrap .message-text {
-    color: white;
+    color: #fff;
 }
 
 #pmbar {
-    color: white; /* Changes text color to white */
-    background-color: black; /* Optional: Changes the background color */
+    color: #fff;
+    background-color: #000;
 }
 
 .pm-buffer .timestamp {
-    color: white; /* Lighter color for timestamps */
+    color: #fff;
 }
 
 #ytapiplayer_html5_api {
-  border-radius: 15px; /* Rounded corners by default */
-  transition: all 0.3s ease-in-out; /* Smooth transition for changes */
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 #ytapiplayer_html5_api:hover {
-  border-radius: 20px; /* Make corners more rounded when hovered */
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .video-js .vjs-control-bar {
-    background-color: rgba(0, 0, 0, 0.0); /* 50% transparent black background */
-    border-radius: 10px 10px 10px 10px;
-backdrop-filter: blur(15px);
- /* Rounded bottom corners for controls */
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
 }
-/* Remove scaling effect */
+
+/* Removed scaling effect */
 p:hover, p:active {
-    transform: none; /* No scaling on hover or tap */
+    transform: none;
 }
 
-/* Optionally, use other effects like background or text changes */
 p:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Light background color on hover */
-    color: #fff; /* Change text color on hover */
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #fff;
 }
 
-/* Prevent scaling for the span inside the p */
 span:hover {
-    transform: none; /* Ensure span doesn't scale on hover */
+    transform: none;
 }
 
 .channel-emote {
@@ -367,56 +382,56 @@ span:hover {
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .input-group-addon {
-  background-color: none;
-  color: #fff;
-  padding: 13px 5px;
-  font-size: 15px;
-  border-radius: 9px 0 0 15px;
-  font-weight: bold;
-  border: none;
+    background-color: transparent;
+    color: #fff;
+    padding: 13px 5px;
+    font-size: 15px;
+    border-radius: 9px 0 0 15px;
+    font-weight: bold;
+    border: none;
 }
 
 .form-control {
-  background-color: none;
-  color: #000;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 15px;
-  border: 1px solid #fff;
-  width: 100%;
+    background-color: transparent;
+    color: #000;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 1px solid #fff;
+    width: 100%;
 }
 
 .form-control:focus {
-  border-color: #000;
-  outline: none;
+    border-color: #000;
+    outline: none;
 }
 
 .server-msg-reconnect {
     border-radius: 15px;
-    background-color: black;
-    color: white;
-    font-family: Oswald;
-    border: 1px solid green; /* Change the border color to #fff; */
+    background-color: #000;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    border: 1px solid green;
 }
 
 .server-msg-disconnect {
     border-radius: 15px;
-    background-color: black;
-    color: white;
-    font-family: Oswald;
-    border: 1px solid #FF0000; /* Red border color */
+    background-color: #000;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    border: 1px solid #FF0000;
 }
 
 #userlist {
-    font-family: Oswald;
-    border-right: 0px solid white !important; /* Keep the border width */
-    margin-right: -40px; /* Move the line (border) to the left */
-    padding-right: 20px; /* Add some padding to the right side to give more space to the content */
+    font-family: 'Oswald', sans-serif;
+    border-right: 0 solid #fff !important;
+    margin-right: -40px;
+    padding-right: 20px;
 }
 
 input.form-control[type="text"], 
@@ -426,29 +441,29 @@ input.form-control[type="email"] {
 }
 
 .qbtn-play, .qbtn-next, .qbtn-tmp {
-  color: black;
-  background-color: white;
-  border: none;
-  padding: 5px 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-  transition: background-color 0.2s;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.2s;
 }
 
 .qbtn-delete {
-  color: white;
-  background-color: #f25252;
-  border: none;
-  padding: 5px 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-  display: inline-block;
-  transition: background-color 0.2s;
+    color: #fff;
+    background-color: #f25252;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.2s;
 }
 
 .btn:hover {
@@ -461,7 +476,7 @@ input.form-control[type="email"] {
 
 .user-dropdown {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 200px;
     display: inline-block;
     z-index: 1000;
@@ -477,112 +492,93 @@ input.form-control[type="email"] {
 .panel-default > .panel-heading {
     color: #fff;
     background-color: #000;
-    border-radius: 25px;  /* Increase to make the corners more rounded */
+    border-radius: 25px;
     border-color: red;
 }
 
 .profile-box, .user-dropdown, .emotelist-table td {
-    color: #000; /* Black text */
+    color: #000;
     border-radius: 15px;
-    background-color: #fff; /* White background */
+    background-color: #fff;
 }
 
 .chat-msg-Aminox .username {
-    color: #fff!important;
+    color: #fff !important;
     text-shadow: 0 0 4px #F0C700;
-    background: none!important;
+    background: none !important;
 }
 
-.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-text {
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-text {
     color: #fff;
 }
 
 html, body {
     height: 100%;
-    color: #808080;  /* Default text color (white) */
+    color: #808080;
     margin: 0;
-    font-family: Oswald !important;
+    font-family: 'Oswald', sans-serif !important;
 }
 
-/* Default gray color for all usernames */
 .username {
-    color: #d3d3d3;  /* Light gray for usernames */
+    color: #d3d3d3;
 }
 
-/* Specific color for the owner's name */
 .username.owner {
-    color: #FFD700;  /* Gold for owner */
+    color: #FFD700;
 }
-
 
 .gif-container img {
-    width: 100%;  /* Make the GIF width 100% of its parent container */
+    width: 100%;
     max-width: 500px;
     display: block;
     margin: 0 auto;
-    border-radius: 15px;  /* Maximum width is 500px, it won't exceed this size */
-    height: auto;   /* Maintain aspect ratio */
-
+    border-radius: 15px;
+    height: auto;
 }
 
 footer {
-  background-color: #000 ! important;  /* Dark background color */
+    background-color: #000 !important;
 }
 
 .move-up {
     margin-left: 200px;
-    position: fixed;
-    font-size: 15px;
     position: relative;
-    top: -25px;  /* Moves the text up by 5px */
+    font-size: 15px;
+    top: -25px;
 }
 
 .move-left {
     margin-left: 50px;
-    position: fixed;
-    font-size: 13px;
     position: relative;
-    top: -49px;  /* Moves the text up by 5px */
+    font-size: 13px;
+    top: -49px;
 }
 
-/* Style the buttons inside the vertical button group */
 .btn-group-vertical > .btn {
-    border-radius: 10px;        /* Apply rounded corners to all buttons */
-    margin-bottom: 5px;         /* Add space between buttons */
-    border: 2px solid #000;     /* Set the border to black */
+    border-radius: 10px;
+    margin-bottom: 5px;
+    border: 2px solid #000;
 }
 
-/* Remove the border on the first button */
 .btn-group-vertical > .btn:first-child {
-    border-top-left-radius: 10px;  /* Ensure rounded top-left corner */
-    border-top-right-radius: 10px; /* Ensure rounded top-right corner */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-/* Remove the border on the last button */
 .btn-group-vertical > .btn:last-child {
-    border-bottom-left-radius: 10px; /* Ensure rounded bottom-left corner */
-    border-bottom-right-radius: 10px; /* Ensure rounded bottom-right corner */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-/* Add border between buttons (remove borders from middle buttons) */
 .btn-group-vertical > .btn:not(:first-child):not(:last-child) {
-    border-radius: 0;  /* Remove border-radius for middle buttons */
-    border-top: 2px solid #000;  /* Add a black border between middle buttons */
-    border-bottom: 2px solid #000; /* Add a black border between middle buttons */
-}
-
-
-#videowrap-header {
-    border: none;
-    font-family: Oswald !important;
-    font-size: 12px;
-    font-weight: bold;
-    visibility: hidden; /* Hides the text but keeps the element's layout */
+    border-radius: 0;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
 }
 
 button[data-dismiss="modal"]:hover {
     background-color: gray;
-    color: white;
+    color: #fff;
 }
 
 button[data-dismiss="modal"] {
@@ -639,44 +635,36 @@ button[data-dismiss="modal"] {
     transition: all 0.3s ease;
 }
 
-/* عند عدم الضغط (شكل همبرغر) */
 .navbar-toggle.collapsed .icon-bar:nth-child(1) {
     transform: rotate(0deg);
     position: relative;
-    top: 0px;
-    transition: all 0.3s ease;
+    top: 0;
 }
 
 .navbar-toggle.collapsed .icon-bar:nth-child(2) {
     opacity: 1;
-    transition: all 0.3s ease;
 }
 
 .navbar-toggle.collapsed .icon-bar:nth-child(3) {
     transform: rotate(0deg);
     position: relative;
-    top: 0px;
-    transition: all 0.3s ease;
+    top: 0;
 }
 
-/* عند الضغط (يتحول إلى X) */
 .navbar-toggle:not(.collapsed) .icon-bar:nth-child(1) {
     transform: rotate(45deg);
     position: relative;
     top: 8px;
-    transition: all 0.3s ease;
 }
 
 .navbar-toggle:not(.collapsed) .icon-bar:nth-child(2) {
     opacity: 0;
-    transition: all 0.3s ease;
 }
 
 .navbar-toggle:not(.collapsed) .icon-bar:nth-child(3) {
     transform: rotate(-45deg);
     position: relative;
     top: -8px;
-    transition: all 0.3s ease;
 }
 
 .navbar-inverse .navbar-toggle {
@@ -687,47 +675,42 @@ button[data-dismiss="modal"] {
     background-color: transparent;
 }
 
-/* Change the color of the entire footer text */
 footer p.text-muted.credit::before {
-    content: "BLACKEY offers high-quality adult content for viewers 18 and over, featuring professional films. By accessing this site, you confirm you are of legal age. This site does not store any files on our server, we only linked to the media which is hosted on 3rd party services."; 
+    content: "BLACKEY offers high-quality adult content for viewers 18 and over, featuring professional films. By accessing this site, you confirm you are of legal age. This site does not store any files on our server, we only linked to the media which is hosted on 3rd party services.";
     font-weight: bold;
     font-size: 12px;
-    color: #fff;  /* Set the color for the footer text */
+    color: #fff;
 }
 
 footer p.text-muted.credit::after {
-    content: "This channel created by X: @LuvBLACKED |";  
+    content: "This channel created by X: @LuvBLACKED |";
     font-style: italic;
-    color: #fff; /* Set the color for this section */
+    color: #fff;
 }
 
-/* Change color of the links in the footer */
 footer p.text-muted.credit a {
-    color: #808080;  /* Set the color for all links in the footer */
-    text-decoration: none;  /* Remove the underline from links */
+    color: #808080;
+    text-decoration: none;
 }
 
-/* Change the color of the link text when hovered over */
 footer p.text-muted.credit a:hover {
-    color: #808080;  /* Set the hover color for links */
+    color: #808080;
 }
 
-/* Change color for the "Terms of Use" link */
 footer p.text-muted.credit a[href="https://github.com/CyTube/cytu.be-policies/blob/master/terms-of-use.md"]::after {
-    content: " Read Our Terms";  
-    color: #808080;  /* Set the color for the 'Terms of Use' link */
+    content: " Read Our Terms";
+    color: #808080;
 }
 
-/* Style for all paragraphs in the footer */
 footer p {
-    color: #ffffff;  /* Set the default color for all paragraphs */
-    font-size: 10px;  
-    text-align: center;  
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
 }
 
 #footer {
     position: relative;
-    top: 200px; /* Move the footer down by 20px */
+    top: 200px;
 }
 
 #mediarefresh .glyphicon {
@@ -744,7 +727,7 @@ footer p {
 #mediarefresh::after {
     content: '';
     display: block;
-    background: url('https://pomf2.lain.la/f/poa6k2vy.webp') no-repeat center center;
+    background: url('https://pomf2.lain.la/f/poa6k2vy.webp') no-repeat center;
     background-size: contain;
     width: 20px;
     height: 20px;
@@ -769,27 +752,21 @@ footer p {
     text-indent: -9999px;
 }
 
-.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
     border-radius: 5px;
 }
 
-.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-radius: 5px;
 }
 
-.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+    border-radius: 5px;
 }
 
 :root {
-    --user: #fff; /* Blue color for users */
-    --user_guest: #888888; /* Purple color for guests */
+    --user: #fff;
+    --user_guest: #888888;
 }
 
 #userlist, .adminnick, .chat-msg-Granpa-Joe .username, .username {
@@ -808,67 +785,21 @@ footer p {
     border-color: rgba(0, 0, 0, .6);
 }
 
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.well {
-   display: none;
-}
-
+/* Consolidated .poll-notify rules */
 .poll-notify {
     position: relative;
     padding: 20px;
     height: 100px;
-    font-size: 0px;
-    color: white;
+    font-size: 0;
+    color: #fff;
     border-radius: 15px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 0.5px solid white;
-    margin-bottom: 5px;
-    margin-top: 5px;
-}
-
-.poll-notify::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://pomf2.lain.la/f/qerk2aug.gif');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    z-index: -1;
-}
-
-.poll-notify {
-    position: relative;
-    padding: 20px;
-    height: 100px;
-    font-size: 0px;
-    color: white;
-    border-radius: 15px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 0.5px solid white;
+    border: 0.5px solid #fff;
+    margin: 5px 0;
 }
 
 .poll-notify::before {
@@ -897,9 +828,3 @@ footer p {
     z-index: 1;
     white-space: nowrap;
 }
-
-
-
-
-
-
